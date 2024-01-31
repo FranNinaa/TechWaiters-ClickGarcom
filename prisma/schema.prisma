@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,3 +6,73 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+//criando o modelo de usuario
+model Usuario {
+  Id         String   @id @default(uuid())
+  Nome       String
+  Email      String
+  Password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  @@map("usuario")
+}
+
+//criando o modelo de categoria
+model Categoria {
+  Id         String    @id @default(uuid())
+  Nome       String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @default(now())
+  produtos   Produto[]
+
+  @@map("categoria")
+}
+
+model Produto {
+  Id         String   @id @default(uuid())
+  Nome       String
+  Descricao  String
+  Preco      String
+  Banner     String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  categoria    Categoria @relation(fields: [categoria_id], references: [Id])
+  
+  @@map("produto")
+  categoria_id String
+  itensPedidos ItemPedido[]
+}
+
+model Pedido {
+  Id         String   @id @default(uuid())
+  Mesa       Int
+  Status     Boolean  @default(false)
+  Rascunho   Boolean  @default(true)
+  Nome       String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+ 
+  @@map("pedido")
+   itensPedidos ItemPedido[]
+}
+
+model ItemPedido {
+  Id         String   @id @default(uuid())
+  Quantidade Int
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  
+  pedido Pedido @relation(fields: [pedido_id], references: [Id])
+  produto Produto @relation(fields: [produto_id], references: [Id])
+
+  @@map("itens")
+  pedido_id String
+  produto_id String
+}
+
+
