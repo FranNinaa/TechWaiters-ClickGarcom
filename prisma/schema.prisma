@@ -9,7 +9,7 @@ datasource db {
 
 //criando o modelo de usuario
 model Usuario {
-  id         String   @id @default(uuid())
+  Id         String   @id @default(uuid())
   Nome       String
   Email      String
   Password   String
@@ -31,7 +31,7 @@ model Categoria {
 }
 
 model Produto {
-  id         String   @id @default(uuid())
+  Id         String   @id @default(uuid())
   Nome       String
   Descricao  String
   Preco      String
@@ -47,8 +47,9 @@ model Produto {
 }
 
 model Pedido {
-  id         String   @id @default(uuid())
+  Id         String   @id @default(uuid())
   Mesa       Int
+  Observacao String?
   Status     Boolean  @default(false)
   Rascunho   Boolean  @default(true)
   Nome       String?
@@ -61,14 +62,14 @@ model Pedido {
 }
 
 model ItemPedido {
-  id         String   @id @default(uuid())
+  Id         String   @id @default(uuid())
   Quantidade Int
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
 
   
-  pedido Pedido @relation(fields: [pedido_id], references: [id])
-  produto Produto @relation(fields: [produto_id], references: [id])
+  pedido Pedido @relation(fields: [pedido_id], references: [Id])
+  produto Produto @relation(fields: [produto_id], references: [Id])
 
   @@map("itens")
   pedido_id String
