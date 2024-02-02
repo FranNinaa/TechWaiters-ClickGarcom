@@ -1,34 +1,29 @@
 {
-  "name": "techwaiters-clickgarcom",
+  "name": "TechWaiters-ClickGarcom",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FranNinaa/TechWaiters-ClickGarcom.git"
-  },
+  "repository": "https://github.com/FranNinaa/TechWaiters-ClickGarcom.git",
   "author": "FranNinaa <francinesantoss85@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev src/server.ts"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.5",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
     "@prisma/client": "^5.9.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.2",
     "prisma": "^5.9.0"
-  },
-  "description": "",
-  "bugs": {
-    "url": "https://github.com/FranNinaa/TechWaiters-ClickGarcom/issues"
-  },
-  "homepage": "https://github.com/FranNinaa/TechWaiters-ClickGarcom#readme",
-  "keywords": []
+  }
 }
