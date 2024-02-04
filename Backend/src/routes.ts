@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-
 import { CreateUserController } from './controllers/user/CreateUserController'
 import { AuteUserController } from './controllers/user/AuteUserController'
 import { DetailUserController } from './controllers/user/DetailUserController';
@@ -11,6 +10,9 @@ import { ListCategoryController } from './controllers/category/ListCategoryContr
 
 import { CreateProductController } from './controllers/product/CreateProductController';
 import { ListByCategoryController } from './controllers/product/ListByCategoryController';
+
+import { CreateOrderController } from './controllers/order/CreateOrderController';
+import { RemoveOrderController } from './controllers/order/RemoveOrderController';
 
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
@@ -35,6 +37,9 @@ router.get('/category', new ListCategoryController().handle);
 router.post('/produtos', isAuthenticated,upload.single('file'), new CreateProductController().handle);
 router.get('/categoria/produto', isAuthenticated, new ListByCategoryController().handle);
 
+//rotas pedido
 
+router.post('/pedido', isAuthenticated, new CreateOrderController().handle);
+router.delete('/pedido', isAuthenticated, new RemoveOrderController().handle);
 
 export { router }
