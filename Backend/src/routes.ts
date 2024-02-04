@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import multer from 'multer';
+
 
 import { CreateUserController } from './controllers/user/CreateUserController'
 import { AuteUserController } from './controllers/user/AuteUserController'
@@ -12,7 +14,13 @@ import { ListByCategoryController } from './controllers/product/ListByCategoryCo
 
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
+import uploadConfig from "./config/multer"
+
+
 const router = Router();
+
+//configuração para uploads imagens para a pasta tmp
+const upload = multer(uploadConfig.upload("./tmp"));
 
 //rotas usuario
 router.post('/users', new CreateUserController().handle);
@@ -24,7 +32,7 @@ router.post('/category', new CreateCategoryController().handle);
 router.get('/category', new ListCategoryController().handle);
 
 //rotas produtos
-router.post('/produtos', isAuthenticated, new CreateProductController().handle);
+router.post('/produtos', isAuthenticated,upload.single('file'), new CreateProductController().handle);
 router.get('/categoria/produto', isAuthenticated, new ListByCategoryController().handle);
 
 
