@@ -19,7 +19,6 @@ import { AddItemController } from './controllers/order/AddItemController';
 import { ListOrderController } from './controllers/order/ListOrdersController';
 import { DetailsOrderController } from './controllers/order/DetailsOrderController';
 
-import { DetailsOrderController } from './controllers/order/DetailsOrderController';
 import { RemoveItemController } from './controllers/order/RemoveItemController';
 
 
