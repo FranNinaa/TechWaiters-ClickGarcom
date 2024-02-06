@@ -1,16 +1,16 @@
 //import Head from 'next/head';
 import Image from 'next/image'
 
-import logoImg from '../public/LogoSemFundo.png';
-import styles from './../styles/home.module.scss';
-import {Input} from './components/ui/input';
-import {Button} from './components/ui/button';
+import logoImg from '../../public/LogoSemFundo.png';
+import styles from './../../styles/home.module.scss';
+import {Input} from '../components/ui/input';
+import {Button} from '../components/ui/button';
 
 import Link from 'next/link'
 
-//Tela de Login
+//Tela de Cadastro
  
-export default function Home() {
+export default function Cadastrar() {
   return (
     <>
       <div className={styles.containerCenter}>
@@ -18,13 +18,14 @@ export default function Home() {
         
         <div className={styles.login}>
           <form>
+            <Input placeholder='Digite seu nome' type='text'/> <br/>
             <Input placeholder='Digite seu email' type='text'/> <br/>
             <Input placeholder='Digite sua senha' type='password' /> <br/>
             
-            <Button type="submit" loading={false}>Entrar</Button>
+            <Button type="submit" loading={false}>Cadastrar</Button>
           </form>
-          <Link href="/cadastro">
-              Não possui uma conta? Cadastre-se!
+          <Link href="/">
+              Já possui uma conta? Faça o login!
           </Link>
         </div>
       </div>
