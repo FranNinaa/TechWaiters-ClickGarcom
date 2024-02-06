@@ -3,17 +3,19 @@ import prismaClient from "../../prisma";
 interface ItemRequest{
     pedido_id: string;
     produto_id: string;
-    quantidade: number;
+    Quantidade: number;
+    Observacao: string;
 }
 
 class AddItemService{
-    async execute({pedido_id, produto_id, quantidade}: ItemRequest){
+    async execute({pedido_id, produto_id, Quantidade, Observacao}: ItemRequest){
 
         const ordemPedido = await prismaClient.itemPedido.create({
             data: {
                 pedido_id: pedido_id,
                 produto_id: produto_id,
-                Quantidade: quantidade
+                Quantidade: Quantidade,
+                Observacao: Observacao,
             }
         })
 
