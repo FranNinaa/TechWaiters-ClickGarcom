@@ -38,7 +38,6 @@ CREATE TABLE "produto" (
 CREATE TABLE "pedido" (
     "Id" TEXT NOT NULL,
     "Mesa" INTEGER NOT NULL,
-    "Observacao" TEXT,
     "Status" BOOLEAN NOT NULL DEFAULT false,
     "Rascunho" BOOLEAN NOT NULL DEFAULT true,
     "Nome" TEXT,
@@ -52,6 +51,7 @@ CREATE TABLE "pedido" (
 CREATE TABLE "itens" (
     "Id" TEXT NOT NULL,
     "Quantidade" INTEGER NOT NULL,
+    "Observacao" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "pedido_id" TEXT NOT NULL,
