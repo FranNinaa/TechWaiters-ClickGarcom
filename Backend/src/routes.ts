@@ -7,20 +7,19 @@ import { DetailUserController } from './controllers/user/DetailUserController';
 
 import { CreateCategoryController } from './controllers/category/CreateCategoryController'
 import { ListCategoryController } from './controllers/category/ListCategoryController'
+import { ListByCategoryController } from './controllers/product/ListByCategoryController';
 
 import { CreateProductController } from './controllers/product/CreateProductController';
-import { ListByCategoryController } from './controllers/product/ListByCategoryController';
+
+import { AddItemController } from './controllers/order/AddItemController';
+import { RemoveItemController } from './controllers/order/RemoveItemController';
 
 import { CreateOrderController } from './controllers/order/CreateOrderController';
 import { RemoveOrderController } from './controllers/order/RemoveOrderController';
 import { SendOrderController } from './controllers/order/SendOrderController';
-
-import { AddItemController } from './controllers/order/AddItemController';
 import { ListOrderController } from './controllers/order/ListOrdersController';
 import { DetailsOrderController } from './controllers/order/DetailsOrderController';
-
-import { RemoveItemController } from './controllers/order/RemoveItemController';
-
+import { FinishOrderController } from './controllers/order/FinishOrderController';
 
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import uploadConfig from "./config/multer"
@@ -51,10 +50,11 @@ router.delete('/pedido', isAuthenticated, new RemoveOrderController().handle);
 router.put('/ordemPedido/send', isAuthenticated, new SendOrderController().handle)
 router.get('/pedidos', isAuthenticated, new ListOrderController().handle)
 router.get('/detalhe/pedidos', isAuthenticated, new DetailsOrderController().handle)
+router.put('/pedido/finalizado', isAuthenticated, new FinishOrderController().handle)
 
 //rotas de item
 router.post('/ordemPedido/add', isAuthenticated, new AddItemController().handle)
-router.delete('/ordemPedido/remove', isAuthenticated, new RemoveItemController().handle);
+router.delete('/ordemPedido/remove', isAuthenticated, new RemoveItemController().handle)
 
 
 
