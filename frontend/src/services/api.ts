@@ -16,12 +16,15 @@ export function setupAPIClient(ctx = undefined){
 
   api.interceptors.response.use(response => {
     return response;
-  }, (error: AxiosError) => {
-    if(error.response.status === 401){
+  }, 
+    (error: AxiosError) => {
+    // Verifica se 'response' existe no objeto de erro antes de tentar acessar 'status'
+    if(error.response && error.response.status === 401){
       // qualquer erro 401 (nao autorizado) devemos deslogar o usuario
       if(typeof window !== undefined){
         // Chamar a funçao para deslogar o usuario
         signOut();
+        
       }else{
         return Promise.reject(new AuthTokenError())
       }
