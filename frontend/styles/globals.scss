@@ -3,28 +3,19 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    box-sizing: 0;
-    background: var(--dark-strong);
+    box-sizing: border-box;
 }
-
 
 :root{
     --white: #fff;
     --black: #000;
 
-    --dark-strong: #101026;
-    --dark-medium: #212138;
-    --dark-light: #44445C;
+    --dark-900: #101026;
+    --dark-700: #1a1a2e;
 
-    --grey: #8a8a8a;
-    --grey-light: #c4c4c4;
-
-
-    --green: #3fffa3;
-    --yellow: #ffe03f;
-    --red: #f13d49;
-    --blue: #3fd1ff;
-
+    --gray-100: #8a8a8a;
+    --green-900: #3fffa3;
+    --red-900: #ff3f4b;
 }
 
 button{
@@ -37,21 +28,21 @@ a{
 }
 
 body{
-    background: var(--dark-strong);
+    background: var(--dark-700)
 }
 
-body,input,textarea,select,button{
+body, input, textarea, button{
     font: 400 1rem sans-serif;
 }
 
-@media (max-width:720px){
+@media (max-width: 720px){
     html{
-        font-size: 87.5%;
+        font-size: 87.5%;//vai gerar 14 px font padrão
     }
 }
 
-@media (max-width:1080px){
+@media (max-width: 1080px){
     html{
-        font-size: 93.75%;
+        font-size: 93.75%;//gerar 15px como padrão
     }
 }
