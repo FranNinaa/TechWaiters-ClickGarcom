@@ -120,7 +120,7 @@ export function AuthProvider({children}: AuthProviderProps){
 
         } catch (error) {
             toast.error("Erro ao cadastrar");
-            console.log("erro ao cadastrar", error)
+            //console.log("erro ao cadastrar", error)
         }
     }
 
