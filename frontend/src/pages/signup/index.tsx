@@ -1,3 +1,4 @@
+import { FormEvent, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../../styles/home.module.scss'
@@ -13,6 +14,26 @@ import Link from 'next/link'
 
 //Tela de Login
 export default function Signup() {
+
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [loading, setLoading] = useState(false);
+
+  async function handleSingUp(event: FormEvent) {
+    event.preventDefault();
+
+    if(nome === '' || email === "" || password === ""){
+      alert('Preencha os dados');
+      return;
+    }
+
+    setLoading(true);
+
+  }
+
+
   return (
     <>
       <Head>
@@ -22,28 +43,35 @@ export default function Signup() {
         <Image src={logoImg} alt="Logo Click Garçom" />
 
         <div className={styles.login}>
-            <h1>
-                Criando sua Conta
-            </h1>
-          <form>
-          <Input
+          <h1>
+            Criando sua Conta
+          </h1>
+          <form onSubmit={handleSingUp}>
+            <Input
               placeholder='Digite seu nome'
               type="text"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+
             />
 
             <Input
               placeholder='Digite seu e-mail'
               type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <Input
               placeholder='Digite sua senha'
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
             <Button
               type="submit"
-              loading={false}
+              loading={loading}
             >
               Cadastrar
             </Button>
