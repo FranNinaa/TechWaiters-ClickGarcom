@@ -1,14 +1,13 @@
 import axios, { AxiosError } from 'axios'
 import { parseCookies } from 'nookies'
 import { AuthTokenError } from './errors/AuthTokenError'
-
 import { signOut } from '../context/AuthContext'
 
 export function setupAPIClient(ctx = undefined){
   let cookies = parseCookies(ctx);
 
   const api = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:5000',
     headers: {
       Authorization: `Bearer ${cookies['@nextauth.token']}`
     }

@@ -40,7 +40,7 @@ class AuteUserService {
        )
 
         return {
-            id: user.Id,
+            Id: user.Id,
             Nome: user.Nome,
             Email: user.Email,
             Token: token
