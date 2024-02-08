@@ -8,44 +8,46 @@ import styles from '../../styles/home.module.scss'
 import { Input } from '../components/ui/Input'
 import { Button } from '../components/ui/Button'
 
-import {AuthContext} from '../context/AuthContext'
+import { AuthContext } from '../context/AuthContext'
 
 import Link from 'next/link'
+import { toast } from 'react-toastify';
+import { canSSRGuest } from '../utils/canSSRGuest';
 
 
 
 //Tela de Login
 export default function Home() {
-  const {signIn} = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext)
 
   const [Email, setEmail] = useState('')
   const [Password, setPassword] = useState('')
 
   const [loading, setLoading] = useState(false)
-  
 
-  async function handleLogin(event:FormEvent){
+
+  async function handleLogin(event: FormEvent) {
     event.preventDefault()
 
-    if(Email === "" || Password === ""){
-      alert("Preencha os Dados");
+    if (Email === "" || Password === "") {
+      toast.warning("Preencha os Dados");
       return;
     }
-    
+
     setLoading(true);
 
-    let data ={
+    let data = {
       Email,
       Password
     }
 
     await signIn(data);
-    
+
     setLoading(false);
 
-  
+
   }
-    
+
   return (
     <>
       <Head>
@@ -89,3 +91,9 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+  return {
+    props: {}
+  }
+})
