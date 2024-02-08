@@ -18,8 +18,8 @@ import Link from 'next/link'
 export default function Home() {
   const {signIn} = useContext(AuthContext)
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [Email, setEmail] = useState('')
+  const [Password, setPassword] = useState('')
 
   const [loading, setLoading] = useState(false)
   
@@ -28,8 +28,8 @@ export default function Home() {
     event.preventDefault()
     
     let data ={
-      email,
-      password
+      Email,
+      Password
     }
     await signIn(data)
   }
@@ -48,14 +48,14 @@ export default function Home() {
             <Input
               placeholder='Digite seu e-mail'
               type="text"
-              value={email}
+              value={Email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
             <Input
               placeholder='Digite sua senha'
               type="password"
-              value={password}
+              value={Password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
