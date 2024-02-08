@@ -6,8 +6,9 @@ import Router from 'next/router';
 type AuthContextData = {
     user: UserProps | undefined;
     isAuthenticated: boolean;
-    signIn: (credentials: SiggnInProps) => Promise<void>;
+    signIn: (credentials: SignInProps) => Promise<void>;
     signOut: () => void
+    signUp:(credentials: SignUpProps) => Promise<void>;
 }
 
 type UserProps = {
@@ -16,10 +17,17 @@ type UserProps = {
     Email: string;
 }
 
-type SiggnInProps = {
+type SignInProps = {
     Email: string;
     Password: string;
 }
+
+type SignUpProps = {
+    Nome: string;
+    Email: string;
+    Password: string
+}
+
 type AuthProviderProps = {
  children: ReactNode;
 }
@@ -40,7 +48,7 @@ export function AuthProvider({children}: AuthProviderProps){
     const [user, setUser] = useState<UserProps>()
     const isAuthenticated = !!user;
 
-    async function signIn({Email, Password}: SiggnInProps){
+    async function signIn({Email, Password}: SignInProps){
         try {
             const response = await api.post('/login',{
                 Email,
@@ -77,10 +85,30 @@ export function AuthProvider({children}: AuthProviderProps){
                 console.log('Erro ao logar na aplicação!! Erro desconhecido.');
             }
         }
+
+
+
+
+
+    }
+
+    async function signUp({Nome, Email, Password}:SignUpProps) {
+        try {
+            const response = await api.post('/users',{
+                Nome,
+                Email,
+                Password
+            })
+
+            Router.push('/')
+
+        } catch (error) {
+            console.log("erro ao cadastrar", error)
+        }
     }
 
     return(
-        <AuthContext.Provider value={{user, isAuthenticated, signIn, signOut }}>
+        <AuthContext.Provider value={{user, isAuthenticated, signIn, signOut, signUp }}>
            {children}
         </AuthContext.Provider>
     )

@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../../styles/home.module.scss'
@@ -8,6 +8,7 @@ import logoImg from '../../../public/LogoSemFundo.png'
 import { Input } from '../../components/ui/Input'
 import { Button } from '../../components/ui/Button'
 
+import { AuthContext } from '@/src/context/AuthContext';
 import Link from 'next/link'
 
 
@@ -15,24 +16,34 @@ import Link from 'next/link'
 //Tela de Login
 export default function Signup() {
 
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { signUp } = useContext(AuthContext);
+
+  const [Nome, setNome] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
 
   const [loading, setLoading] = useState(false);
 
   async function handleSingUp(event: FormEvent) {
     event.preventDefault();
 
-    if(nome === '' || email === "" || password === ""){
-      alert('Preencha os dados');
-      return;
+    if (Nome === '' || Email === "" || Password === "") {
+      alert('Preencha os dados')
+      return
     }
 
     setLoading(true);
 
-  }
+    let data = {
+      Nome,
+      Email,
+      Password,
+    }
 
+    signUp(data);
+    setLoading(false);
+
+  }
 
   return (
     <>
@@ -50,7 +61,7 @@ export default function Signup() {
             <Input
               placeholder='Digite seu nome'
               type="text"
-              value={nome}
+              value={Nome}
               onChange={(e) => setNome(e.target.value)}
 
             />
@@ -58,14 +69,14 @@ export default function Signup() {
             <Input
               placeholder='Digite seu e-mail'
               type="text"
-              value={email}
+              value={Email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
             <Input
               placeholder='Digite sua senha'
               type="password"
-              value={password}
+              value={Password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
