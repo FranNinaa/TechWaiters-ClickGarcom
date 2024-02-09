@@ -16,10 +16,14 @@ export function Header() {
 
                 <nav className={styles.menuNav}>
                     <Link href="/category" legacyBehavior>
-                        <a>Categoria</a>
+                        <a>Nova Categoria</a>
                     </Link>
 
                     <Link href="/product" legacyBehavior>
+                        <a>Novo Produto</a>
+                    </Link>
+
+                    <Link href="/cardapio" legacyBehavior>
                         <a>Cardapio</a>
                     </Link>
 
