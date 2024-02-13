@@ -32,25 +32,25 @@
     
 }
 
-.orderItems{
+.orderItem{
     display: flex;
     flex-direction: row;
     background-color: var(--dark-900);
     margin-bottom: 1rem;
     align-items: center;
     border-radius: 0.3rem;
-
+  
     button{
-        border: 0;
-        background: transparent;
-        font-size: 1.2rem;
-        color: var(--white);
-        height: 60px;
-        align-items: center;
-        display: flex;
-
+      border:0;
+      background: transparent;
+      font-size: 1.2rem;
+      color: var(--white);
+      height: 60px;
+      align-items: center;
+      display: flex;
     }
-}
+  
+  }
 
 .tag{
     width: 9px;
@@ -58,6 +58,6 @@
     height: 60px;
     border-radius: 0.3rem 0 0 0.3rem;
     margin-right: 1rem;
-}
+  }
 
 
