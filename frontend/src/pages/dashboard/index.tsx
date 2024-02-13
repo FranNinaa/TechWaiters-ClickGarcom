@@ -1,18 +1,38 @@
+import { useState } from 'react';
 import { canSSRAuth } from '../../utils/canSSRAuth'
 import Head from 'next/head'
-import {Header} from'../../components/Header'
+import { Header } from '../../components/Header'
 import styles from './styles.module.scss';
 import { FiRefreshCcw } from 'react-icons/fi'
+import { setupAPIClient } from '@/src/services/api';
 
-export default function Dashboard() {
+type OrderProps = {
+    Id: string;
+    Mesa: string | number;
+    Status: string | number;
+    Rascunho: string | null;
+}
+
+interface HomeProps {
+    pedidos: OrderProps[];
+}
+
+export default function Dashboard({ pedidos }: HomeProps) {
+
+    const [orderList, setOrderList] = useState(pedidos || []);
+
+    function  handleOpenModalView(id: string){
+        
+    }
+
     return (
         <>
-        <Head>
-        <title>Dashboard</title>
-        </Head>
+            <Head>
+                <title>Dashboard</title>
+            </Head>
             <div>
-                <Header/>
-                
+                <Header />
+
                 <main className={styles.container}>
 
                     <div className={styles.containerHeader}>
@@ -20,20 +40,23 @@ export default function Dashboard() {
 
                         <button>
 
-                            <FiRefreshCcw size={25} color="#3fffa3"/>
+                            <FiRefreshCcw size={25} color="#3fffa3" />
 
                         </button>
 
-                    </div>    
+                    </div>
 
                     <article className={styles.listOrders}>
 
-                        <section className={styles.orderItem}>
-                            <button>
-                                <div className={styles.tag}></div>
-                                <span>Mesa 30</span>
-                            </button>
-                        </section>
+                        {orderList.map(item => (
+                            <section key={item.Id} className={styles.orderItem}>
+                                <button onClick={()=> handleOpenModalView(item.Id)}>
+                                    <div className={styles.tag}></div>
+                                    <span>Mesa {item.Mesa}</span>
+                                </button>
+                            </section>
+                        ))}
+
 
                     </article>
 
@@ -43,12 +66,17 @@ export default function Dashboard() {
         </>
 
     )
-  
+
 }
 
 
 export const getServerSideProps = canSSRAuth(async (ctx) => {
+    const apiClient = setupAPIClient(ctx);
+    const response = await apiClient.get('/pedidos');
+    console.log(response.data);
     return {
-        props: {}
+        props: {
+            pedidos: response.data
+        }
     }
 })
