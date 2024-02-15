@@ -66,6 +66,23 @@ export default function Dashboard({ pedidos }: HomeProps) {
 
     }
 
+    async function handleFinishItem(id: string) {
+        const apiClient = setupAPIClient();
+        await apiClient.put('/pedido/finalizado', {
+            pedido_id: id
+        })
+
+        const response = await apiClient.get('/pedidos');
+        setOrderList(response.data);
+        setModalVisible(false);
+    }
+
+    async function handleRefreshOrders() {
+        const apiClient = setupAPIClient();
+        const response = await apiClient.get('/pedidos');
+        setOrderList(response.data);        
+    }
+
     Modal.setAppElement('#__next');
 
     return (
@@ -81,7 +98,7 @@ export default function Dashboard({ pedidos }: HomeProps) {
                     <div className={styles.containerHeader}>
                         <h1>Últimos pedidos</h1>
 
-                        <button>
+                        <button onClick={handleRefreshOrders}>
 
                             <FiRefreshCcw size={25} color="#3fffa3" />
 
@@ -90,6 +107,11 @@ export default function Dashboard({ pedidos }: HomeProps) {
                     </div>
 
                     <article className={styles.listOrders}>
+
+                        {orderList.length === 0 && (
+                            <span className={styles.emptyList}>Nenhum mesa aberta...</span>
+
+                        )}
 
                         {orderList.map(item => (
                             <section key={item.Id} className={styles.orderItem}>
@@ -113,6 +135,7 @@ export default function Dashboard({ pedidos }: HomeProps) {
                             onRequestClose={handleCloseModal}
                             /* A exclamação no final indica ao compilador que não existe a possibilidade daquela variável ser null ou undefined */
                             pedido={modalItem!}
+                            handleFinishOrder={handleFinishItem}
 
                         />
                     )}
