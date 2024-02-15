@@ -41,7 +41,7 @@ router.post('/category', new CreateCategoryController().handle);
 router.get('/category', new ListCategoryController().handle);
 
 //rotas produtos
-router.post('/produtos', upload.single('file'), new CreateProductController().handle);
+router.post('/produtos', isAuthenticated,upload.single('file'), new CreateProductController().handle);
 router.get('/categoria/produto', isAuthenticated, new ListByCategoryController().handle);
 
 //rotas pedido
