@@ -11,6 +11,7 @@ class ListOrderServices {
             created_at: 'desc'
         }
     })
+    console.log(pedidos,"teste");
     return pedidos;
     
   }

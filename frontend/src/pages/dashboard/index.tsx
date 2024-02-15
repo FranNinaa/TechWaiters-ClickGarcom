@@ -4,26 +4,69 @@ import Head from 'next/head'
 import { Header } from '../../components/Header'
 import styles from './styles.module.scss';
 import { FiRefreshCcw } from 'react-icons/fi'
-import { setupAPIClient } from '@/src/services/api';
+import { setupAPIClient } from '../../services/api';
+import { ModalOrder } from '../../components/ModalOrder';
+import Modal from 'react-modal';
+
 
 type OrderProps = {
     Id: string;
     Mesa: string | number;
-    Status: string | number;
-    Rascunho: string | null;
+    Status: boolean;
+    Rascunho: boolean;
+    Nome: string | null;
 }
 
 interface HomeProps {
     pedidos: OrderProps[];
 }
 
+export type OrderItemProps = {
+    Id: string;
+    Quantidade: number;
+    Observacao: string;
+    pedido_id: string;
+    produto_id: string;
+    produto: {
+        Id: string;
+        Nome: string;
+        Descricao: string;
+        Preco: string;
+        Banner: string;
+    }
+    pedido: {
+        Id: string;
+        Mesa: string | number;
+        Status: boolean;
+        Nome: string | null;
+    }
+
+}
+
 export default function Dashboard({ pedidos }: HomeProps) {
 
     const [orderList, setOrderList] = useState(pedidos || []);
+    const [modalItem, setModalItem] = useState<OrderItemProps[]>();
+    const [modalVisible, setModalVisible] = useState(false);
 
-    function  handleOpenModalView(id: string){
-        
+    function handleCloseModal() {
+        setModalVisible(false);
     }
+
+    async function handleOpenModalView(id: string) {
+        const apiClient = setupAPIClient();
+        const response = await apiClient.get('/detalhe/pedidos', {
+            params: {
+                pedido_id: id,
+            }
+        })
+        console.log(id)
+        setModalItem(response.data);
+        setModalVisible(true);
+
+    }
+
+    Modal.setAppElement('#__next');
 
     return (
         <>
@@ -50,15 +93,30 @@ export default function Dashboard({ pedidos }: HomeProps) {
 
                         {orderList.map(item => (
                             <section key={item.Id} className={styles.orderItem}>
-                                <button onClick={()=> handleOpenModalView(item.Id)}>
+                                <button onClick={() => handleOpenModalView(item.Id)}>
                                     <div className={styles.tag}></div>
                                     <span>Mesa {item.Mesa}</span>
                                 </button>
                             </section>
                         ))}
 
-
                     </article>
+
+                </main>
+
+                <main>
+
+                    {modalVisible && (
+                        <ModalOrder
+
+                            isOpen={modalVisible}
+                            onRequestClose={handleCloseModal}
+                            /* A exclamação no final indica ao compilador que não existe a possibilidade daquela variável ser null ou undefined */
+                            pedido={modalItem!}
+
+                        />
+                    )}
+
 
                 </main>
 
@@ -73,7 +131,6 @@ export default function Dashboard({ pedidos }: HomeProps) {
 export const getServerSideProps = canSSRAuth(async (ctx) => {
     const apiClient = setupAPIClient(ctx);
     const response = await apiClient.get('/pedidos');
-    console.log(response.data);
     return {
         props: {
             pedidos: response.data
