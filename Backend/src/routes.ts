@@ -34,27 +34,32 @@ const upload = multer(uploadConfig.upload("./tmp"));
 //rotas usuario
 router.post('/users', new CreateUserController().handle);
 router.post('/login', new AuteUserController().handle);
-router.get('/me', isAuthenticated, new DetailUserController().handle)
+router.get('/me', new DetailUserController().handle)
 
 //rotas de categoria
-router.post('/category', new CreateCategoryController().handle);
-router.get('/category', new ListCategoryController().handle);
+router.post('/category',  new CreateCategoryController().handle);
+router.get('/category',  new ListCategoryController().handle);
 
 //rotas produtos
+<<<<<<< HEAD
 router.post('/produtos', isAuthenticated,upload.single('file'), new CreateProductController().handle);
 router.get('/categoria/produto', isAuthenticated, new ListByCategoryController().handle);
+=======
+router.post('/produtos',  upload.single('file'), new CreateProductController().handle);
+router.get('/categoria/produto', new ListByCategoryController().handle);
+>>>>>>> dcfaeb836baf07bfd644eaf2bff7baee3069adab
 
 //rotas pedido
-router.post('/pedido', isAuthenticated, new CreateOrderController().handle);
-router.delete('/pedido', isAuthenticated, new RemoveOrderController().handle);
-router.put('/ordemPedido/send', isAuthenticated, new SendOrderController().handle)
-router.get('/pedidos', isAuthenticated, new ListOrderController().handle)
-router.get('/detalhe/pedidos', isAuthenticated, new DetailsOrderController().handle)
-router.put('/pedido/finalizado', isAuthenticated, new FinishOrderController().handle)
+router.post('/pedido', new CreateOrderController().handle);
+router.delete('/pedido', new RemoveOrderController().handle);
+router.put('/ordemPedido/send', new SendOrderController().handle)
+router.get('/pedidos',new ListOrderController().handle)
+router.get('/detalhe/pedidos', new DetailsOrderController().handle)
+router.put('/pedido/finalizado', new FinishOrderController().handle)
 
 //rotas de item
-router.post('/ordemPedido/add', isAuthenticated, new AddItemController().handle)
-router.delete('/ordemPedido/remove', isAuthenticated, new RemoveItemController().handle)
+router.post('/ordemPedido/add', new AddItemController().handle)
+router.delete('/ordemPedido/remove', new RemoveItemController().handle)
 
 
 

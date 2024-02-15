@@ -1,23 +1,24 @@
 import prismaClient from "../../prisma";
 
 interface DetailsRequest {
-    pedidoId: string;
+    pedido_id: string;
 
 }
 
 class DetailsOrderService {
-    async execute({ pedidoId}: DetailsRequest){
+    async execute({ pedido_id }: DetailsRequest) {
         const pedidos = await prismaClient.itemPedido.findMany({
             where: {
-                pedido_id: pedidoId
+                pedido_id: pedido_id
             },
-            include:{
+            include: {
                 produto: true,
                 pedido: true
             }
         })
+        console.log(pedidos)
         return pedidos;
 
     }
 }
-export { DetailsOrderService}
+export { DetailsOrderService }
