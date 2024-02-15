@@ -26,6 +26,7 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
-    "prisma": "^5.9.0"
+    "prisma": "^5.9.0",
+    "react-modal": "^3.16.1"
   }
 }

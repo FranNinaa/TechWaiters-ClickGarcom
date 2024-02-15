@@ -42,13 +42,13 @@ router.get('/category',  new ListCategoryController().handle);
 
 //rotas produtos
 router.post('/produtos',  upload.single('file'), new CreateProductController().handle);
-router.get('/categoria/produto', isAuthenticated, new ListByCategoryController().handle);
+router.get('/categoria/produto', new ListByCategoryController().handle);
 
 //rotas pedido
 router.post('/pedido', new CreateOrderController().handle);
 router.delete('/pedido', new RemoveOrderController().handle);
 router.put('/ordemPedido/send', new SendOrderController().handle)
-router.get('/pedidos', new ListOrderController().handle)
+router.get('/pedidos',new ListOrderController().handle)
 router.get('/detalhe/pedidos', new DetailsOrderController().handle)
 router.put('/pedido/finalizado', new FinishOrderController().handle)
 
