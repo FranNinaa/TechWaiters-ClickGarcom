@@ -4,7 +4,7 @@ import { RemoveOrderService } from "../../services/order/RemoveOrderService";
 class RemoveOrderController {
     async handle(req: Request, res: Response) {
 
-        const pedido_id = req.params.pedido_id as string;
+        const pedido_id = req.query.pedido_id as string;
 
         const removeOrder = new RemoveOrderService();
 

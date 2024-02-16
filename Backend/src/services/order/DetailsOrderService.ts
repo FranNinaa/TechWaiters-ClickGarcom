@@ -16,7 +16,7 @@ class DetailsOrderService {
                 pedido: true
             }
         })
-        console.log(pedidos)
+        
         return pedidos;
 
     }
