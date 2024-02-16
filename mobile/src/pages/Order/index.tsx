@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput, Modal, FlatList } 
 import { Feather } from '@expo/vector-icons'
 
 import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackList } from '../../routes/app.routes'
 
 import { api } from '../../services/api';
 import { ModalPicker } from "../../components/ModalPicker";
@@ -39,7 +41,7 @@ type OrderRouteProps = RouteProp<RouteDetail, "Order">;
 export default function Order() {
 
     const route = useRoute<OrderRouteProps>();
-    const navigation = useNavigation();
+    const navigation = useNavigation<NativeStackNavigationProp<StackList>>();
 
     const [categoria, setCategoria] = useState<CategoryProps[] | []>([]);
     const [categoriaSelecionada, setCategoriaSelecionada] = useState<CategoryProps | undefined>();
@@ -76,8 +78,6 @@ export default function Order() {
         }
         loadProducts();
     }, [categoriaSelecionada])
-
-    console.log(produtos)
 
     async function handleCloseOrder() {
         try {
@@ -118,7 +118,26 @@ export default function Order() {
         setItems(oldArray => [...oldArray, data]);
     }
 
+    async function handleDeleteItem(item_id: string) {
+        await api.delete('/ordemPedido/remove', {
+            params: {
+                item_id: item_id
+            }
+        })
 
+        let removeItem = items.filter(item => {
+            return (item.Id !== item_id)
+        })
+
+        setItems(removeItem);
+    }
+
+    function handleFinishOrder() {
+        navigation.navigate("FinishOrder",{
+            mesa: route.params?.mesa,
+            pedido_id: route.params?.pedido_id,
+        });
+    }
 
     return (
         <View style={styles.container}>
@@ -149,7 +168,8 @@ export default function Order() {
                     style={[styles.input, { width: '60%', textAlign: 'center' }]}
                     placeholderTextColor="#F0F0F0"
                     keyboardType="numeric"
-                    value="1"
+                    placeholder="1"
+                    onChangeText={setQuantidade}
                 />
             </View>
 
@@ -161,6 +181,7 @@ export default function Order() {
                 <TouchableOpacity
                     style={[styles.button, { opacity: items.length === 0 ? 0.3 : 1 }]}
                     disabled={items.length === 0}
+                    onPress={handleFinishOrder}
                 >
                     <Text style={styles.buttonText}>Avançar</Text>
                 </TouchableOpacity>
@@ -172,7 +193,7 @@ export default function Order() {
                 style={{ flex: 1, marginTop: 24 }}
                 data={items}
                 keyExtractor={(item) => item.Id}
-                renderItem={({ item }) => <ListItem data={item} />}
+                renderItem={({ item }) => <ListItem data={item} deleteItem={handleDeleteItem} />}
             />
 
             <Modal transparent={true} visible={modalCategoria} animationType="fade">
