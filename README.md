@@ -206,7 +206,7 @@ Para que a aplicação móvel possa se comunicar com o servidor backend, você p
  importar axios de "axios";
 
 Const API = axios.create({
- baseURL: "http://192.168.1.10:5000"
+ baseURL: "http://xxx.xxx.x.xx:5000"
  });
 
 exportar { api };
@@ -230,7 +230,7 @@ Siga as instruções detalhadas no arquivo 'README.md' para obter mais informaç
 
 ## Vídeo Demonstrativo
 
-Clique no link abaixo para ver a demonstração do projeto Backend
+Clique no link abaixo para ver a demonstração do projeto Mobile
 
 [![Vídeo Demonstrativo](assets/mobileVideo.PNG)](assets/Mobile.mp4)
 
