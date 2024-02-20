@@ -8,6 +8,8 @@ class DetailUserController{
         //id do usuario logado
         const user_id = req.user_id;
 
+        console.log("id do user " , user_id)
+
         const detailUserService = new DetailUserService();
 
         const user = await detailUserService.execute(user_id);

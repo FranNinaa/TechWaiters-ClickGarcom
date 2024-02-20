@@ -37,7 +37,7 @@ class AuteUserService {
         process.env.JWT_SECRET,
         {
             subject: user.Id,
-            expiresIn: '90d'
+            expiresIn: '30d'
         }
        )
 
@@ -45,7 +45,7 @@ class AuteUserService {
             Id: user.Id,
             Nome: user.Nome,
             Email: user.Email,
-            Token: token
+            token: token
          }
     }
 }

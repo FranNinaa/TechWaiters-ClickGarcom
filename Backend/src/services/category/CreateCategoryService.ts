@@ -15,7 +15,7 @@ class CreateCategoryService {
 
     // Utiliza o Prisma Client para criar uma nova categoria no banco de dados com o nome fornecido.
     // A cláusula select especifica que apenas o Id e o Nome da categoria criada devem ser retornados.
-    const category = await prismaClient.categoria.create({
+    const categoria = await prismaClient.categoria.create({
       data: {
         Nome: Nome,
       },
@@ -25,7 +25,7 @@ class CreateCategoryService {
       }
     })
 
-    return category;
+    return categoria;
   }
 }
 
