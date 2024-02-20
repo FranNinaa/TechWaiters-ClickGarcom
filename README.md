@@ -257,7 +257,8 @@ Este projeto foi possível graças aos esforços colaborativos de uma equipe ded
 Agradecemos a todos os que contribuíram com seu tempo, energia e habilidades para tornar este projeto um sucesso.
 
 # Agradecimentos Especiais
-Gostaríamos de expressar nossa mais profunda gratidão ao Professor [Ivan J. Borchardt](https://www.linkedin.com/in/ivan-borchardt/) por sua orientação indispensável e ao projeto Entra21 pela oportunidade e suporte oferecidos, sua paixão pelo ensino e dedicação ao conhecimento nos inspiraram a cada passo do caminho. Além disso, somos imensamente agradecidos ao projeto [Entra 21](https://www.entra21.com.br/) por nos fornecer os recursos e o ambiente que nos permitiram crescer, inovar e transformar nossas ideias em uma solução tangível. Esse conjunto de suporte e educação foi o combustível que impulsionou nossa jornada e nos ajudou a alcançar os objetivos estabelecidos. Obrigado por acreditar em nosso potencial e por nos equipar com as ferramentas necessárias para navegar no mundo da tecnologia.
+Gostaríamos de expressar nossa mais profunda gratidão ao Professor [Ivan J. Borchardt](https://www.linkedin.com/in/ivan-borchardt/) por sua orientação indispensável, sua paixão pelo ensino e dedicação ao conhecimento nos inspiraram a cada passo do caminho. 
+Além disso, somos imensamente agradecidos ao projeto [Entra 21](https://www.entra21.com.br/) por nos fornecer os recursos e o ambiente que nos permitiram crescer, inovar e transformar nossas ideias em uma solução tangível. Esse conjunto de suporte e educação foi o combustível que impulsionou nossa jornada e nos ajudou a alcançar os objetivos estabelecidos. Obrigado por acreditar em nosso potencial e por nos equipar com as ferramentas necessárias para navegar no mundo da tecnologia.
 
 
 
