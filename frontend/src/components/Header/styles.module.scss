@@ -1,7 +1,8 @@
+/* Estilização do container principal do cabeçalho */
 .headerContainer{
     height: 5rem;
 }
-
+/* Estilização do conteúdo dentro do cabeçalho */
 .headerContent{
     max-width: 1300px;
      height: 5rem;
@@ -11,10 +12,12 @@
     justify-content: space-between;
     align-items: center;
 
+/* Estilização específica para imagens dentro do headerContent */
     img{
         cursor: pointer;
         transition: transform 0.5s;
 
+ /* Efeito de hover aumentando o tamanho da imagem */
         &:hover{
            transform: scale(1.5);
         }
@@ -23,10 +26,12 @@
 
 }
 
+/* Estilização da navegação principal do cabeçalho */
 .menuNav{
     display: flex;
     align-items: center;
 
+/* Estilização para cada link dentro da navegação */
     a{
         color: var(--white);
         padding: 0 0.5rem;
@@ -34,6 +39,7 @@
         position: relative;
         transition: color 0.7s;
 
+/* Espaçamento entre os links */
         & + a{
             margin-left: 2rem;
         }
@@ -42,7 +48,7 @@
             color: var(--green-900);
         }
     }
-
+/* Estilização do botão dentro da navegação */
     button{
         margin-left: 2rem;
         background: transparent;

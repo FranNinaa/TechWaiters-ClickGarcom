@@ -1,3 +1,4 @@
+// Importações do React, React Native, ícones, React Navigation, e a API configurada
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Modal, FlatList } from "react-native";
 import { Feather } from '@expo/vector-icons'
@@ -10,7 +11,7 @@ import { api } from '../../services/api';
 import { ModalPicker } from "../../components/ModalPicker";
 import { ListItem } from "../../components/ListItem";
 
-
+// Tipagem para os parâmetros da rota e as propriedades dos itens
 type RouteDetail = {
     Order: {
         mesa: number | string;
@@ -39,21 +40,21 @@ type ItemProps = {
 type OrderRouteProps = RouteProp<RouteDetail, "Order">;
 
 export default function Order() {
-
+// Hooks do React e React Navigation para gerenciar estados e navegação
     const route = useRoute<OrderRouteProps>();
     const navigation = useNavigation<NativeStackNavigationProp<StackList>>();
 
+    // Estados para categoria, produto, modal e itens do pedido
     const [categoria, setCategoria] = useState<CategoryProps[] | []>([]);
     const [categoriaSelecionada, setCategoriaSelecionada] = useState<CategoryProps | undefined>();
     const [modalCategoria, setModalCategoria] = useState(false);
-
     const [produtos, setProdutos] = useState<ProductsProps[] | []>([]);
     const [produtoSelecionado, setProdutoSelecionado] = useState<ProductsProps | undefined>();
     const [modalProduto, setModalProduto] = useState(false);
-
     const [quantidade, setQuantidade] = useState('1');
     const [items, setItems] = useState<ItemProps[]>([]);
 
+     // Carrega informações das categorias e produtos da API
     useEffect(() => {
         async function loadInfo() {
             const response = await api.get('/category')
@@ -100,7 +101,7 @@ export default function Order() {
     function handleChangeProduct(item: ProductsProps) {
         setProdutoSelecionado(item);
     }
-
+ // Função para adicionar itens ao pedido
     async function handleAdd() {
         const response = await api.post('ordemPedido/add', {
             pedido_id: route.params?.pedido_id,
@@ -117,7 +118,7 @@ export default function Order() {
 
         setItems(oldArray => [...oldArray, data]);
     }
-
+// Função para remover itens do pedido
     async function handleDeleteItem(item_id: string) {
         await api.delete('/ordemPedido/remove', {
             params: {
@@ -131,7 +132,7 @@ export default function Order() {
 
         setItems(removeItem);
     }
-
+// Navega para a tela de finalizar pedido
     function handleFinishOrder() {
         navigation.navigate("FinishOrder",{
             mesa: route.params?.mesa,
@@ -139,6 +140,7 @@ export default function Order() {
         });
     }
 
+    // Renderização do componente, incluindo modais para seleção de categoria e produto
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -216,7 +218,7 @@ export default function Order() {
     )
 
 }
-
+// Estilos aplicados aos componentes da tela
 const styles = StyleSheet.create({
     container: {
         flex: 1,

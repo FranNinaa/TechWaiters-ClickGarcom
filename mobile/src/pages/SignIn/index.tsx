@@ -1,14 +1,17 @@
+// Importações necessárias do React e React Native, bem como o contexto de autenticação
 import React, { useState, useContext } from "react";
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, ActivityIndicator } from "react-native";
 import { AuthContext } from "../../contexts/AuthContext"
 
+// Acessa a função signIn e o estado loadingAuth do contexto de autenticação
 export default function SingIn() {
     const { signIn, loadingAuth } = useContext(AuthContext)
 
+// Estados locais para armazenar o email e a senha digitados pelo usuário
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
 
-    //testando se o campo email e senha esta vazio
+    // Função chamada ao pressionar o botão de login
     async function handleLogin() {
         if ((Email === '') || (Password === '')) {
             return

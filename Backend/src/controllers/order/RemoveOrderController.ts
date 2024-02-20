@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { RemoveOrderService } from "../../services/order/RemoveOrderService";
 
+// Define a classe RemoveOrderController para lidar com as requisições de remoção de pedidos.
 class RemoveOrderController {
     async handle(req: Request, res: Response) {
 

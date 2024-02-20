@@ -1,23 +1,29 @@
 import React from "react";
+// Importação de componentes do React Native para construção da UI e manipulação de dimensões da tela
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions, ScrollView } from "react-native";
 
+// Importação dos tipos para as propriedades das categorias
 import { CategoryProps } from "../../pages/Order";
 
+// Definição das propriedades esperadas pelo ModalPicker
 interface ModalPickerProps{
     options: CategoryProps[];
     handleCloseModal: () => void;
     selectedItem: (item: CategoryProps) => void;
 }
 
+// Obtém as dimensões da tela para uso no estilo do componente
 const {width: WIDTH, height: HEIGHT} = Dimensions.get('window')
 
 export function ModalPicker({options, handleCloseModal, selectedItem}: ModalPickerProps){
     
+ // Função chamada ao pressionar uma opção, que seleciona o item e fecha o modal
     function onPressItem(item: CategoryProps){
         selectedItem(item);
         handleCloseModal();
     }
 
+// Mapeia cada opção para um componente TouchableOpacity, permitindo a seleção
     const option = options.map((item, index) => (
         <TouchableOpacity key={index} style={styles.option} onPress={() => onPressItem(item)}>
             <Text style={styles.item}>
@@ -27,7 +33,7 @@ export function ModalPicker({options, handleCloseModal, selectedItem}: ModalPick
     ))
     
     
-    
+// Renderiza o modal e suas opções dentro de um ScrollView
     return(
         <TouchableOpacity style={styles.container} onPress={handleCloseModal}>
             <View style={styles.content}>
@@ -38,7 +44,7 @@ export function ModalPicker({options, handleCloseModal, selectedItem}: ModalPick
         </TouchableOpacity>
     )
 }
-
+// Estilos para o modal e suas opções
 const styles = StyleSheet.create({
     container:{
         flex: 1,

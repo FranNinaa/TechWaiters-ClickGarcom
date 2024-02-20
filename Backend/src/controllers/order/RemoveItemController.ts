@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { RemoveItemService } from "../../services/order/RemoveItemService";
 
+// Define a classe RemoveItemController para lidar com as requisições de remoção de item.
 class RemoveItemController {
     async handle(req: Request, res: Response) {
 

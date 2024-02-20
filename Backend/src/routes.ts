@@ -1,16 +1,22 @@
 import { Router } from 'express';
 import multer from 'multer';
 
+// Importa os controladores de usuários.
 import { CreateUserController } from './controllers/user/CreateUserController'
 import { AuteUserController } from './controllers/user/AuteUserController'
 import { DetailUserController } from './controllers/user/DetailUserController';
 
+// Importa os controladores de categorias.
 import { CreateCategoryController } from './controllers/category/CreateCategoryController'
 import { ListCategoryController } from './controllers/category/ListCategoryController'
+
+// Importa o controlador de listagem de produtos por categoria.
 import { ListByCategoryController } from './controllers/product/ListByCategoryController';
 
+// Importa o controlador de criação de produtos.
 import { CreateProductController } from './controllers/product/CreateProductController';
 
+// Importa os controladores de pedidos.
 import { AddItemController } from './controllers/order/AddItemController';
 import { RemoveItemController } from './controllers/order/RemoveItemController';
 
@@ -21,10 +27,10 @@ import { ListOrderController } from './controllers/order/ListOrdersController';
 import { DetailsOrderController } from './controllers/order/DetailsOrderController';
 import { FinishOrderController } from './controllers/order/FinishOrderController';
 
-import { isAuthenticated } from './middlewares/isAuthenticated';
+//import { isAuthenticated } from './middlewares/isAuthenticated';
+
+// Configuração do multer para uploads de imagens para a pasta tmp.
 import uploadConfig from "./config/multer"
-
-
 
 const router = Router();
 
@@ -58,6 +64,5 @@ router.delete('/ordemPedido/remove', new RemoveItemController().handle)
 
 
 
-
-
+// Exporta o router configurado para ser utilizado no arquivo principal da aplicação.
 export { router }

@@ -1,3 +1,4 @@
+// Importações necessárias do React e outras bibliotecas
 import { useState, ChangeEvent, FormEvent } from 'react';
 import Head from 'next/head';
 import styles from './styles.module.scss';
@@ -7,16 +8,21 @@ import { FiUpload } from 'react-icons/fi'
 import { setupAPIClient } from '../../services/api';
 import { toast } from 'react-toastify'
 
+// Tipagem para as propriedades das categorias de produtos
 type ItemProps = {
     Id: string;
     Nome: string;
 }
 
+// Tipagem para as propriedades recebidas pelo componente
 interface ProductProps {
     categoryList: ItemProps[];
 }
 
+// Componente de página para cadastro de novos produtos
 export default function Product({ categoryList }: ProductProps) {
+
+// Estados para gerenciar as entradas do formulário e a categoria selecionada
     const [nome, setNome] = useState('');
     const [preco, setPreco] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -25,6 +31,7 @@ export default function Product({ categoryList }: ProductProps) {
     const [categories, setCategories] = useState(categoryList || []);
     const [categorySelected, setCategorySelected] = useState(0);
 
+ // Manipulação da seleção de arquivos de imagem
     function handelFile(e: ChangeEvent<HTMLInputElement>): void {
         if (!e.target.files || e.target.files.length === 0) {
             return;
@@ -42,12 +49,13 @@ export default function Product({ categoryList }: ProductProps) {
         }
 
     }
-
+   // Atualização da categoria selecionada
     function handleChangeCategory(event: ChangeEvent<HTMLSelectElement>) {
         const value = parseInt(event.target.value);
         setCategorySelected(value);
     }
 
+ // Submissão do formulário para cadastro do produto
     async function handleProduto(e: FormEvent) {
         e.preventDefault();
 
@@ -158,8 +166,10 @@ export default function Product({ categoryList }: ProductProps) {
     );
 }
 
-
+// getServerSideProps para autenticação no lado do servidor e carregamento inicial da lista de categorias
 export const getServerSideProps = canSSRAuth(async (ctx) => {
+
+    // Requisição para obter a lista de categorias do servidor
     const apiClient = setupAPIClient(ctx);
 
     const response = await apiClient.get('/category');

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { DetailUserService } from '../../services/user/DetailUserService'
 
+// Define a classe DetailUserController para lidar com as requisições de detalhes do usuário.
 class DetailUserController{
     async handle(req: Request, res: Response){
 

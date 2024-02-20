@@ -1,13 +1,21 @@
 import React, { useContext } from "react";
 import { ActivityIndicator, View } from "react-native";
 
-import AppRoutes from "./app.routes";
+// Importa as rotas da aplicação para usuários autenticados
+import AppRoutes from "./app.routes"; 
+
+ // Importa as rotas da aplicação para usuários não autenticados
 import AuthRoutes from "./auth.routes";
+
+ // Importa o contexto de autenticação
 import { AuthContext } from "../contexts/AuthContext";
 
+
+ // Obtém informações de autenticação do contexto
 function Routes() {
     const { isAuthenticated, loading } = useContext(AuthContext);
 
+     // Se estiver carregando, exibe um indicador de atividade
     if (loading) {
         return (
             <View style={{
@@ -21,7 +29,7 @@ function Routes() {
         )
     }
     return (
-        //ternário verifica a variavel for true (usauraio logado) renderiza AppRoutes        
+        // Renderiza AppRoutes se o usuário estiver autenticado, caso contrário, renderiza AuthRoutes
         isAuthenticated ? <AppRoutes /> : <AuthRoutes />
     );
 }

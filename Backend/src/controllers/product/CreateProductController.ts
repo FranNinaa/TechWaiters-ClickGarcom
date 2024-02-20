@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { CreateProductService } from "../../services/product/CreateProductService";
 
+// Define a classe CreateProductController para lidar com as requisições de criação de produtos.
 class CreateProductController {
     async handle(req: Request, res: Response) {
 

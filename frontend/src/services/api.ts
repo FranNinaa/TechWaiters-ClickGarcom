@@ -1,12 +1,16 @@
+// Importa o axios e tipos relevantes, além de funções/utilitários do Next.js e do próprio sistema
 import axios, { AxiosError, AxiosInstance  } from 'axios'
 import { GetServerSidePropsContext } from 'next';
 import { parseCookies } from 'nookies'
 import { AuthTokenError } from './errors/AuthTokenError'
-import { signOut } from '../context/AuthContext'
+import { signOut } from '../context/AuthContext'  // Função para deslogar o usuário
 
+
+// Função para configurar um cliente API com Axios, opcionalmente recebendo o contexto do lado do servidor
 export function setupAPIClient(ctx?: GetServerSidePropsContext): AxiosInstance {
   let cookies = parseCookies(ctx);
 
+// Cria uma instância do Axios com configurações base, incluindo a URL base da API e o token de autenticação
   const api = axios.create({
     baseURL: 'http://localhost:5000',
     headers: {
@@ -29,7 +33,7 @@ export function setupAPIClient(ctx?: GetServerSidePropsContext): AxiosInstance {
         return Promise.reject(new AuthTokenError())
       }
     }       
-
+ // Retorna a instância do Axios configurada
     return Promise.reject(error);
 
   })

@@ -1,3 +1,4 @@
+/* Estilos principais para o container geral da página */
 .container {
     max-width: 720px;
     margin: 4rem auto;
@@ -7,12 +8,12 @@
     flex-direction: column;
 
 }
-
+/* Estilização específica para o cabeçalho (h1) dentro do container */
 .container h1 {
     color: var(--white);
 
 }
-
+/* Estilos para o cabeçalho da lista de pedidos */
 .containerHeader {
     display: flex;
     flex-direction: row;
@@ -24,14 +25,14 @@
 
     }
 }
-
+/* Estilos para a lista de pedidos */
 .listOrders {
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
 
 }
-
+/* Estilos para cada item individual na lista de pedidos */
 .orderItem {
     display: flex;
     flex-direction: row;
@@ -60,7 +61,7 @@
     margin-right: 1rem;
 }
 
-
+/* Estilos para a mensagem exibida quando a lista de pedidos está vazia */
 .emptyList {
     font-size: 1.4rem;
     color: var(--gray-100);

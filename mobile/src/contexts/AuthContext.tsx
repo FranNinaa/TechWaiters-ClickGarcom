@@ -1,7 +1,10 @@
 import React, { useState, createContext, ReactNode, useEffect } from "react";
+
+// Biblioteca para armazenamento local
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { api } from "../services/api";
 
+// Tipagem para os dados no contexto de autenticação
 type AuthContextData = {
     user: UserProps;
     isAuthenticated: boolean;
@@ -10,7 +13,7 @@ type AuthContextData = {
     loading: boolean;
     signOut: () => Promise<void>;
 }
-
+// Tipagem para os dados do usuário
 type UserProps = {
     Id: string;
     Nome: string;
@@ -18,15 +21,18 @@ type UserProps = {
     Token: string;
 }
 
+// Tipagem para as propriedades do AuthProvider
 type AuthProviderProps = {
     children: ReactNode;
 }
 
+// Tipagem para as credenciais de login
 type SignInProps = {
     Email: string;
     Password: string;
 }
 
+// Criação do contexto de autenticação
 export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -44,7 +50,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const [loading, setLoading] = useState(true)
     const isAuthenticated = !!user.Nome;
 
-    //ciclo de vida do app
+    // Verifica a existência de dados do usuário ao iniciar o app
     useEffect(() => {
 
         async function getUser() {
@@ -73,7 +79,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
         getUser();
     }, [])
-
+ // Função para realizar o login
     async function signIn({ Email, Password }: SignInProps) {
         setLoadingAth(true);
 
@@ -121,7 +127,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 })
             })
     }
-
+  // Provedor do contexto, disponibilizando estados e funções para a aplicação
     return (
         <AuthContext.Provider value={{ user, isAuthenticated, signIn, loading, loadingAuth, signOut }} >
             {children}

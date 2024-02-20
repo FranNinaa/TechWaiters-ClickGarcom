@@ -1,3 +1,4 @@
+/* Estilização base para o componente Button */
 .button{
     max-width: 600px;
     background-color: var(--green-900);
@@ -7,6 +8,7 @@
     border-radius: 0.5rem;
     transform:filter 0.2s;
 
+ /* Estilos aplicados quando o botão está desabilitado */
     &[disabled]{
         cursor: not-allowed;
         svg{
@@ -19,12 +21,13 @@
     }
 
 }
-
+/* Estilização para o texto dentro do botão */
 .buttonText{
     color: var(--dark-900);
     font-weight: bold;
 }
 
+/* Animação aplicada ao ícone de carregamento dentro do botão desabilitado */
 @keyframes animate{
  from{
     transform: rotate(0deg);

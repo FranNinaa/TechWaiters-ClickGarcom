@@ -4,13 +4,15 @@ import { FiX } from 'react-icons/fi'
 
 import { OrderItemProps } from '../../pages/dashboard';
 
-interface ModalOrderProps {
+// Interface para as props do componente ModalOrder
+interface ModalOrderProps { // Controla a visibilidade do modal
     isOpen: boolean;
     onRequestClose: () => void;
     pedido: OrderItemProps[];
-    handleFinishOrder: (id: string) => void;
+    handleFinishOrder: (id: string) => void; // Função para marcar o pedido como concluído
 }
 
+// Componente ModalOrder: exibe os detalhes e permite a conclusão de um pedido
 export function ModalOrder({ isOpen, onRequestClose, pedido, handleFinishOrder }: ModalOrderProps) {
     const custonStyles = {
         content: {
@@ -23,7 +25,7 @@ export function ModalOrder({ isOpen, onRequestClose, pedido, handleFinishOrder }
             backgroundColor: '#1d1d2e',
         }
     };
-
+// Renderiza o componente Modal
     return (
         <Modal
             isOpen={isOpen}
@@ -54,6 +56,7 @@ export function ModalOrder({ isOpen, onRequestClose, pedido, handleFinishOrder }
                     </section>
                 ))}
 
+            {/* Botão para concluir o pedido */}
                 <button className={styles.buttonOrder} onClick={() => handleFinishOrder(pedido[0].pedido_id)}>
                     Concluir pedido
                 </button>

@@ -1,6 +1,7 @@
 import {Request, Response} from 'express';
 import {SendOrderService} from '../../services/order/SendOrderService';
 
+// Define a classe SendOrderController para lidar com requisições de envio de pedidos.
 class SendOrderController{
     async handle(req: Request, res: Response){
         const {pedido_id} = req.body;

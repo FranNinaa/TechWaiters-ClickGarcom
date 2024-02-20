@@ -1,48 +1,44 @@
 import React, { useState, useContext } from "react";
+// Importação de componentes do React Native e ferramentas de navegação
 import { View, Text, Button, TextInput, TouchableOpacity, StyleSheet, Image } from "react-native";
-
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StackList } from "../../routes/app.routes";
 import { AuthContext } from "../../contexts/AuthContext";
-
 import { api } from '../../services/api';
 
-
-
 export default function Dashboard() {
+    // Utiliza o contexto de autenticação para acessar a função de logout
     const { signOut } = useContext(AuthContext);
-    //a variavel segue as props de NativeStackNavigationProp e diciona as props de StackList
-    const navegation = useNavigation<NativeStackNavigationProp<StackList>>();
+    // Configuração da navegação com tipagem para auto-sugestão das rotas
+    const navigation = useNavigation<NativeStackNavigationProp<StackList>>();
 
+    // Estado para gerenciar o número da mesa inserido pelo usuário
     const [mesa, setMesa] = useState('');
 
+    // Função para abrir uma nova mesa e navegar para a tela de pedido
     async function abrirMesa() {
-        //se Mesa estiver vazia, retorna
-        if (mesa === "") {
+        if (mesa === "") { 
             return;
         }
 
-        const response = await api.post('/pedido', {
-            Mesa: Number(mesa)
-        })
-        //se o usuario digita a mesa é direcionado para a tela Order
-        navegation.navigate('Order', { mesa: mesa, pedido_id: response.data.Id });
+        // Cria um novo pedido associado ao número da mesa
+        const response = await api.post('/pedido', { Mesa: Number(mesa) });
+        // Navega para a tela de pedido com os parâmetros necessários
+        navigation.navigate('Order', { mesa: mesa, pedido_id: response.data.Id });
 
+        // Reseta o estado da mesa após o pedido ser criado
         setMesa('');
     }
 
     return (
         <SafeAreaView style={styles.container}>
-
-            <Image
-                style={styles.logo}
-                source={require("../../assets/Logo_sem_palavra.png")}          
-            />
-
+            {/* Logo e título da tela */}
+            <Image style={styles.logo} source={require("../../assets/Logo_sem_palavra.png")}/>
             <Text style={styles.title}>Novo Pedido</Text>
 
+            {/* Campo de entrada para o número da mesa */}
             <TextInput style={styles.input}
                 placeholder="Numero da mesa"
                 placeholderTextColor={"#fff"}
@@ -51,19 +47,20 @@ export default function Dashboard() {
                 onChangeText={setMesa}
             />
 
+            {/* Botão para abrir a mesa e iniciar um novo pedido */}
             <TouchableOpacity style={styles.button} onPress={abrirMesa}>
                 <Text style={styles.buttonText}>Abrir Mesa</Text>
             </TouchableOpacity>
 
+            {/* Botão de logout */}
             <TouchableOpacity style={styles.signOut} onPress={signOut}>
                 <Text style={styles.signOutText}>Sair</Text>
             </TouchableOpacity>
-
         </SafeAreaView>
     );
-
 }
 
+// Estilos utilizados no componente
 const styles = StyleSheet.create({
     container: {
         flex: 1,

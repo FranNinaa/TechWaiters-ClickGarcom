@@ -1,3 +1,4 @@
+/* Estilos principais para o container da página, definindo seu layout geral */
 .container{
     max-width: 720px;
     margin: 4rem auto;
@@ -8,12 +9,13 @@
     text-align: center;
 
 }
-
+/* Estilos específicos para o cabeçalho h1 dentro do container */
 .container h1{
     color: var(--white);
 
 }
 
+/* Estilos para o formulário, organizando seus campos em uma coluna */
 .form{
     display: flex;
     flex-direction: column;
@@ -31,6 +33,7 @@
     margin-bottom: 1rem;
 }
 
+/* Estilos para o botão de adição no formulário */
 .buttonAdd{
     height: 40px;
     border: 0;

@@ -1,3 +1,4 @@
+/* Estiliza o contêiner principal para centralizar o conteúdo vertical e horizontalmente */
 .containerCenter{
     min-height: 100vh;
     display: flex;
@@ -6,7 +7,7 @@
     flex-direction: column;
     background: var(--gray-900);
 }
-
+/* Estiliza a área de login, incluindo o formulário e o título */
 .login{
     margin-top: 2rem;
     width: 600px;
@@ -16,31 +17,33 @@
     flex-direction: column;
     padding: 2rem 1.5rem;
 
+/* Estiliza o título dentro da seção de login */
     h1{
         color: var(--white);
         margin-bottom: 1rem;
     }
-
+  /* Estiliza o formulário de login */
     form{
         width: 90%;
         display: flex;
         flex-direction: column;   
 
     }
-
+/* Estiliza o botão dentro do formulário */
     form button{
         height: 40px;
         font-size: 1.2rem;
 
     }
 }
-
+/* Estiliza o texto abaixo do formulário, como links para outras páginas ou ações */
 .text{
  margin-top: 1rem;
  color:  var(--white);
  cursor: pointer;
 }
 
+/* Ajusta o layout para telas menores que 620px */
 @media(max-width: 620px){
     .login{
         width: 90%;

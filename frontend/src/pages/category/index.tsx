@@ -6,9 +6,11 @@ import { setupAPIClient } from "../../services/api"
 import { toast } from "react-toastify"
 import { canSSRAuth} from '../../utils/canSSRAuth'
 
+// Componente da página de cadastro de categorias
 export default function Category() {
     const [nome, setNome] = useState('')
 
+// Função para lidar com o registro de uma nova categoria
     async function handleRegisterCategory(event: FormEvent) {
         event.preventDefault()
 
@@ -52,7 +54,7 @@ export default function Category() {
         </>
     )
 }
-
+// Função getServerSideProps para garantir que apenas usuários autenticados acessem esta página
 export const getServerSideProps = canSSRAuth(async (ctx) => {
     return {
         props: {}

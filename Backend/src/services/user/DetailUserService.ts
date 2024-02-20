@@ -1,5 +1,6 @@
 import prismaClient from "../../prisma";
 
+// Declara a classe DetailUserService, que encapsula a lógica para recuperar detalhes de um usuário específico.
 class DetailUserService {
 
     async execute(user_id: string) {

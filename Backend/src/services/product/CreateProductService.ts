@@ -1,5 +1,8 @@
 import prismaClient from "../../prisma";
 
+
+// Define uma interface para garantir a digitação correta dos dados de entrada para o método de execução do serviço.
+// Isso ajuda a manter a integridade e consistência dos dados que estão sendo passados ​​para a função
 interface ProductRequest{
     Nome: string,
     Descricao: string,
@@ -7,7 +10,7 @@ interface ProductRequest{
     Banner: string,
     categoria_id: string
 }
-
+// Declara a classe CreateProductService, que encapsula a lógica para criar um novo produto.
 class CreateProductService {
     async execute({Nome, Descricao, Preco, Banner, categoria_id}: ProductRequest) {
 

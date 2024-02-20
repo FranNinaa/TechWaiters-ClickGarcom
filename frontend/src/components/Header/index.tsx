@@ -5,8 +5,13 @@ import { Button } from '../../components/ui/Button'
 import { FiLogOut } from 'react-icons/fi'
 import {AuthContext, signOut} from '../../context/AuthContext'
 
+// Componente Header: representa o cabeçalho da aplicação
 export function Header() {
+
+    // Utiliza o contexto de autenticação para acessar a função de logout
     const { signOut } = useContext(AuthContext);
+
+    // Renderiza o componente de cabeçalho
     return (
         <header className={styles.headerContainer} >
             <div className={styles.headerContent}>

@@ -1,3 +1,4 @@
+/* Estilização base para o componente input */
 .input{
     margin-bottom: 1rem;
     height: 40px;
@@ -9,6 +10,7 @@
     border: 1px solid var(--gray-100);
 
 }
+/* Estilização específica para o placeholder do input */
 .input::placeholder{
     color: rgba(255, 255, 255, 0.8);
 }

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { CreateOrderService } from "../../services/order/CreateOrderService";
 
+// Define a classe CreateOrderController para lidar com as requisições de criação de novos pedidos.
 class CreateOrderController {
     async handle(req: Request, res: Response) {
         const { Mesa, Nome } = req.body;

@@ -1,14 +1,16 @@
 import prismaClient from "../../prisma";
 import { hash} from 'bcryptjs'
 
+// Define uma interface para assegurar a tipagem correta dos dados de entrada do método execute.
 interface UserRequest {
     Nome: string;
     Email: string;
     Password: string;
 }
-
+// Declara a classe CreateUserService, que encapsula a lógica para criar um novo usuário.
 class CreateUserService {
     async execute({ Nome, Email, Password }: UserRequest) {
+        
         //verifica se mandou um email
         if (!Email) {
             throw new Error("Email incorreto");

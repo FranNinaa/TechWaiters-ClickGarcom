@@ -2,11 +2,13 @@ import prismaClient from "../../prisma";
 import { compare } from "bcryptjs";
 import {sign} from "jsonwebtoken";
 
+// Define uma interface para garantir a tipagem correta dos dados de entrada do método execute.
 interface AuteRequest {
     Email: string;
     Password: string;
 }
 
+// Declara a classe AuteUserService, que encapsula a lógica de autenticação do usuário.
 class AuteUserService {
     async execute({ Email, Password }: AuteRequest) {
         //verifica se o email existe

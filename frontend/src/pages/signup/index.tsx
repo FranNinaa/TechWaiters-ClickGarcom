@@ -1,3 +1,4 @@
+// Importações de hooks e componentes do React e Next.js, além de estilos e utilitários
 import { FormEvent, useState, useContext } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -14,17 +15,18 @@ import { toast } from 'react-toastify';
 
 
 
-//Tela de Login
+// Componente de cadastro
 export default function Signup() {
 
   const { signUp } = useContext(AuthContext);
 
+//Estados para armazenar os valores dos inputs e o estado de carregamento
   const [Nome, setNome] = useState('');
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
-
   const [loading, setLoading] = useState(false);
 
+//Função para lidar com o evento de submissão do formulário
   async function handleSingUp(event: FormEvent) {
     event.preventDefault();
 
@@ -58,6 +60,7 @@ export default function Signup() {
           <h1>
             Criando sua Conta
           </h1>
+      {/* Campos de nome, e-mail e senha com componentes de Input reutilizáveis */}
           <form onSubmit={handleSingUp}>
             <Input
               placeholder='Digite seu nome'

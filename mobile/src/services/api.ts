@@ -1,8 +1,10 @@
 import axios from "axios";
 
+// Cria uma instância do Axios com uma base URL para fazer requisições à API
 const api = axios.create({
-    //colocar o ip da sua maquina aqui para poder rodar o projeto
-    baseURL: "http://192.168.1.11:5000"
+    // Aqui deve ser inserido o endereço IP da máquina onde o servidor da API está sendo executado
+    // Isso permite que o aplicativo faça solicitações para o servidor localmente
+    baseURL: "http://xxx.xxx.x.xxx:5000" // Substitua os 'x' pelo endereço IP da sua máquina
 })
 
 export { api };
