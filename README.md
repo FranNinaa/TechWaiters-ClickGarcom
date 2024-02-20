@@ -93,9 +93,11 @@ yarn start
 
 ## Vídeo Demonstrativo
 
-Clique no link abaixo para ver a demonstração do projeto Backend
+Clique na imagem abaixo para ver a demonstração do projeto Backend:
 
-[![Vídeo Demonstrativo](assets/videoBack.PNG)](assets/backend.mp4)
+<a href="https://youtu.be/Fgjbw_99fTs" target="_blank">
+    <img src="assets/videoBack.PNG" alt="Estrutura do Backend" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+</a>
 
 
  Aproveite a eficiência aprimorada e a melhor experiência de atendimento ao cliente que nosso aplicativo traz para o seu restaurante!
@@ -155,11 +157,14 @@ Verifique se o serviço de back-end está em execução para que o front-end pos
 
 Esperamos que esta documentação ajude você a entender a estrutura e os recursos da parte frontend do nosso Aplicativo de Otimização de Serviço de Restaurante. O projeto visa oferecer uma experiência amigável, impulsionando a eficiência nas operações do restaurante.
 
-## Vídeo Demonstrativo
+# Vídeo Demonstrativo
 
-Clique no link abaixo para ver a demonstração do projeto Frontend
+Clique na imagem abaixo para ver a demonstração do projeto Frontend:
 
-[![Vídeo Demonstrativo](assets/frontend.PNG)](assets/Frontend.mp4)
+<a href="https://youtu.be/FNpHfLx5VtM" target="_blank">
+    <img src="assets/frontend.PNG" alt="Estrutura do Backend" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+</a>
+
 
  # Estrutura do Mobile
 
@@ -262,12 +267,13 @@ Com estas etapas, você garante que a aplicação móvel tenha acesso ao backend
 
 Siga as instruções detalhadas no arquivo 'README.md' para obter mais informações sobre como navegar na base de código, contribuir para o projeto e implantar o aplicativo
 
-## Vídeo Demonstrativo
+# Vídeo Demonstrativo
 
-Clique no link abaixo para ver a demonstração do projeto Mobile
+Clique na imagem abaixo para ver a demonstração do projeto Frontend:
 
-[![Vídeo Demonstrativo](assets/mobileVideo.PNG)](assets/Mobile.mp4)
-
+<a href="https://youtu.be/phybdSRQgCU" target="_blank">
+    <img src="assets/mobileVideo.PNG" alt="Estrutura do Backend" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+</a>
 
 ## Gerenciamento de Projeto no Trello
 
