@@ -28,10 +28,12 @@ export function Header() {
                         <a>Novo Produto</a>
                     </Link>
 
+                    {/* 
                     <Link href="/cardapio" legacyBehavior>
                         <a>Cardapio</a>
                     </Link>
-
+                     */}
+                     
                     <button onClick={signOut}>
                         <FiLogOut color='#fff' size={20} />
                     </button>
