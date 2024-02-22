@@ -51,7 +51,68 @@ Cada uma dessas partes foi cuidadosamente desenvolvida para trabalhar em conjunt
 
 Este projeto inclui uma documentação detalhada para auxiliar no desenvolvimento e na utilização das funcionalidades oferecidas. 
 
-Para mais informações, consulte a documentação completa [aqui](https://docs.google.com/document/d/1MifVlgZb4EPsAkzsf49Gy6FV06GMOI7jW3eas1vIzsk/edit).
+Para mais informações, consulte a documentação completa [AQUI !!](https://docs.google.com/document/d/1MifVlgZb4EPsAkzsf49Gy6FV06GMOI7jW3eas1vIzsk/edit).
+
+# Configuração do Banco de Dados Local
+
+Para que o projeto funcione corretamente, é necessário configurar um banco de dados PostgreSQL local. Siga os passos abaixo para configurar o seu ambiente:
+
+### Pré-requisitos
+
+- Instale o PostgreSQL em sua máquina local.
+- Certifique-se de que o serviço do PostgreSQL esteja rodando.
+
+## Uso do Prisma e Migrações
+
+Este projeto utiliza o Prisma como ORM (Object-Relational Mapper) para facilitar o acesso e a manipulação do banco de dados PostgreSQL. O Prisma oferece uma abstração de alto nível para interagir com o banco de dados, permitindo que você defina o esquema do banco de dados com uma sintaxe clara e legível e realize consultas usando TypeScript ou JavaScript.
+
+Para mais informações e recursos de aprendizado sobre o Prisma, visite a [documentação oficial do Prisma](https://www.prisma.io/docs/).
+
+### Vantagens do Prisma
+
+- **Facilidade de uso**: O Prisma simplifica a definição de modelos de dados e execução de consultas.
+- **Tipo de Segurança**: Como o Prisma é fortemente tipado, ele integra-se bem com TypeScript, proporcionando autocompletação e prevenção de erros em tempo de compilação.
+- **Migrações Automáticas**: As migrações permitem evoluir o esquema do banco de dados de forma controlada e versionada. O Prisma Migrate gera arquivos de migração SQL a partir de mudanças no seu esquema Prisma.
+- **Desenvolvimento Ágil**: O Prisma acelera o processo de desenvolvimento ao lidar com muitas das complexidades do banco de dados por você.
+
+### Por que Migrações?
+
+Migrações são essenciais para o gerenciamento do ciclo de vida do banco de dados. Elas permitem:
+
+- **Controle de Versão para seu Esquema**: Cada migração corresponde a uma versão do esquema do banco de dados, permitindo fácil rastreamento de alterações e reversão, se necessário.
+- **Desenvolvimento Colaborativo**: As migrações ajudam equipes a trabalhar juntas sem conflitos, mantendo a consistência do esquema entre diferentes ambientes de desenvolvimento.
+- **Deployments Seguros**: Aplicar migrações como parte do processo de implantação garante que as mudanças no esquema sejam aplicadas de forma segura e previsível em produção.
+
+Incluir o Prisma e suas migrações no fluxo de trabalho de desenvolvimento do projeto garante que a base de dados esteja sempre alinhada com o código da aplicação, proporcionando uma fonte única de verdade para
+
+
+### Criação do Banco de Dados
+
+- Abra o terminal do PostgreSQL e crie um novo banco de dados:
+```sql
+  CREATE DATABASE nome_do_seu_banco_de_dados;
+```
+### Configuração do Arquivo .env
+No diretório raiz do seu projeto, encontre ou crie um arquivo chamado ..env
+Adicione a seguinte variável com a string de conexão do seu banco de dados: Substitua ***SEU_USUARIO*** ***SUASENHA*** ***nome_do_seu_banco_de_dados***, e pelas suas credenciais e nome do banco de dados que você criou.
+
+```bash
+DATABASE_URL="postgresql://SEU_USUARIO:SUASENHA@localhost:5432/nome_do_seu_banco_de_dados"
+```
+
+### Execução das Migrações
+No terminal, navegue até o diretório do projeto e execute o seguinte comando para aplicar as migrações do banco de dados:
+```bash
+npx prisma migrate dev
+```
+### Verificação
+Para verificar se tudo está configurado corretamente, tente executar uma consulta de teste usando o Prisma Studio:
+```bash
+npx prisma studio
+```
+O Prisma Studio abrirá em seu navegador, onde você pode visualizar e gerenciar os dados do seu banco de dados.
+
+Siga estes passos para configurar seu banco de dados local e começar a trabalhar no projeto.
 
 
 # Estrutura de Backend
@@ -88,7 +149,7 @@ yarn install
 3. Configure seu arquivo com as variáveis de ambiente necessárias..env   
 4. Execute o servidor de back-end:
 ```sh
-yarn start
+yarn dev
 ```
 
 ## Vídeo Demonstrativo
@@ -205,31 +266,17 @@ Para configurar o aplicativo móvel em seu ambiente local:
 2. Clone o repositório para o seu dispositivo local.
 3. Navegue até o diretório do aplicativo móvel e instale as dependências:
 ```Sh
-# Instalar dependências com yarn
-yarn install
+# Instalar dependências com npm
+npm install
 ```
 4. Em seguida, para iniciar o aplicativo em um emulador ou dispositivo físico, você usaria:
 
 ```sh
-# Iniciar o aplicativo com yarn
-yarn start
+# Iniciar o aplicativo com npm
+npm start
 ```
 
-5. Para compilar e executar o aplicativo no iOS, você usaria:
-
-```sh
-# Compilar e executar o aplicativo para iOS com yarn
-yarn ios
-```
-
-6. E para o Android, seria:
-
-```sh
-# Compilar e executar o aplicativo para Android com yarn
-yarn android
- ```
-
-Esses comandos são padrão quando se está trabalhando com React Native e usando o gerenciador de pacotes yarn. Cada comando tem um propósito específico para a preparação e execução do aplicativo em diferentes plataformas e ambientes.
+Esses comandos são padrão quando se está trabalhando com React Native e usando o gerenciador de pacotes npm. Cada comando tem um propósito específico para a preparação e execução do aplicativo em diferentes plataformas e ambientes.
 
 ### Configurando o Endereço IP para Conexão com o Backend
 
