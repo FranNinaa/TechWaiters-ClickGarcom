@@ -3,7 +3,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Importação da tela de SignIn
-import SignIn from "../pages/SignIn"; // Corrigido o nome do import para corresponder à convenção de nomenclatura
+import SignIn from "../pages/SignIn";
 
 // Criação de uma instância do stack navigator
 const Stack = createNativeStackNavigator();
